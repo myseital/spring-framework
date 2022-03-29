@@ -62,7 +62,7 @@ public interface SmartInstantiationAwareBeanPostProcessor extends InstantiationA
 	@Nullable
 	default Constructor<?>[] determineCandidateConstructors(Class<?> beanClass, String beanName)
 			throws BeansException {
-
+		// 第二次调用后置处理器推断构造方法
 		return null;
 	}
 
@@ -88,6 +88,7 @@ public interface SmartInstantiationAwareBeanPostProcessor extends InstantiationA
 	 * @throws org.springframework.beans.BeansException in case of errors
 	 */
 	default Object getEarlyBeanReference(Object bean, String beanName) throws BeansException {
+		// 第四次调用后置处理器，判断是否需要aop
 		return bean;
 	}
 

@@ -71,6 +71,7 @@ final class PostProcessorRegistrationDelegate {
 					registryProcessors.add(registryProcessor);
 				}
 				else {
+					// 通过api传 直接实现BeanFactoryPostProcessor
 					regularPostProcessors.add(postProcessor);
 				}
 			}
@@ -127,7 +128,9 @@ final class PostProcessorRegistrationDelegate {
 			}
 
 			// Now, invoke the postProcessBeanFactory callback of all processors handled so far.
+			// 执行所有的BeanDefinitionRegistryPostProcessor
 			invokeBeanFactoryPostProcessors(registryProcessors, beanFactory);
+			// 执行所有的BeanFactoryPostProcessor 程序员api传入
 			invokeBeanFactoryPostProcessors(regularPostProcessors, beanFactory);
 		}
 

@@ -72,6 +72,7 @@ public interface InstantiationAwareBeanPostProcessor extends BeanPostProcessor {
 	 */
 	@Nullable
 	default Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
+		// 第一次调用后置处理器 返回为null ---- aop
 		return null;
 	}
 
@@ -91,6 +92,8 @@ public interface InstantiationAwareBeanPostProcessor extends BeanPostProcessor {
 	 * @see #postProcessBeforeInstantiation
 	 */
 	default boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
+		// 第五次后置处理器的调用
+		// 返回false 属性就不注入
 		return true;
 	}
 
@@ -115,7 +118,7 @@ public interface InstantiationAwareBeanPostProcessor extends BeanPostProcessor {
 	@Nullable
 	default PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName)
 			throws BeansException {
-
+		// 第六次后置处理器的调用
 		return null;
 	}
 

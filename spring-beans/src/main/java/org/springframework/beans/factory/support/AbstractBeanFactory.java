@@ -240,6 +240,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 			String name, @Nullable Class<T> requiredType, @Nullable Object[] args, boolean typeCheckOnly)
 			throws BeansException {
 
+		// 理解验证beanName是否合法
 		String beanName = transformedBeanName(name);
 		Object bean;
 
@@ -318,6 +319,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 				if (mbd.isSingleton()) {
 					sharedInstance = getSingleton(beanName, () -> {
 						try {
+							// 完成目标对象的创建 如需代理则还要完成代理
 							return createBean(beanName, mbd, args);
 						}
 						catch (BeansException ex) {
