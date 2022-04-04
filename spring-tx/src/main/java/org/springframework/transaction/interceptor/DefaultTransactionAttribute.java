@@ -132,6 +132,7 @@ public class DefaultTransactionAttribute extends DefaultTransactionDefinition im
 	 */
 	@Override
 	public boolean rollbackOn(Throwable ex) {
+		// 回滚异常
 		return (ex instanceof RuntimeException || ex instanceof Error);
 	}
 
