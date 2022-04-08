@@ -262,6 +262,7 @@ public class ModelAndViewContainer {
 
 	/**
 	 * Whether the request has been handled fully within the handler.
+	 * 是否不需要渲染视图 true 不需要 flase 需要
 	 */
 	public boolean isRequestHandled() {
 		return this.requestHandled;
